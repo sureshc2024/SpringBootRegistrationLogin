@@ -131,11 +131,19 @@ Expose the application on port 8080.
 **10. Access the Application**
 
 The application will be available at http://localhost:8080.
+
 The login page: http://localhost:8080
+
 <img width="953" alt="image" src="https://github.com/user-attachments/assets/b91b5a62-f0d7-404e-b113-e74b443dc3e5">
-Registration page:
+
+
+Registration page: http://localhost:8080/register
+
 <img width="955" alt="springbootappregisterpage" src="https://github.com/user-attachments/assets/4fefcb37-b772-4855-9b51-ba09b1c0d707">
+
+
 Users page: http://localhost:8080/users
+
 <img width="944" alt="springbootlistofuserspage" src="https://github.com/user-attachments/assets/7202cea6-cc3a-4417-927d-a19743baef93">
 
 
