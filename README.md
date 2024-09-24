@@ -96,9 +96,13 @@ EXPOSE 3306
 
 **Build the Docker image for the Spring Boot application:**
 
+<img width="527" alt="image" src="https://github.com/user-attachments/assets/bd4d335e-3222-46e0-81b2-f538f99984a5">
+
 docker build -t mysqldb target/.
 
 Run MySQL:
+
+![image](https://github.com/user-attachments/assets/d46c3019-935e-47cb-94f6-f194e4bbec9e)
 
 docker run --name mysqldb --network myapp -e MYSQL_ROOT_PASSWORD=root -e  -p 3306:3306 -d mysqldb
 
@@ -139,6 +143,7 @@ ENTRYPOINT ["java","-jar","/app/SpringBootRegistrationLogin-1.0.jar"]
 Build the Docker image for the Spring Boot application:
 
 <img width="548" alt="image" src="https://github.com/user-attachments/assets/23e1ea86-1836-4cd6-a1e3-025e86dbcab7">
+
 docker build -t web .
 
 **9. Run the Spring Boot Application in a Docker Container**
