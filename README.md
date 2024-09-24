@@ -76,13 +76,22 @@ docker network create springboot-network
 
 **6. Creat a Dockerfile for Mysql container in the database sub directory**.
 
+run the command:  
+
+vi Dockerfile
+
+write the docker file as below:
+
 #Start with a base image containing mysql
 
 FROM mysql:latest
 
 #Copy table.sql into the container for creating database
+
 COPY table.sql /docker-entrypoint-initdb.d/
+
 #Exposing  mysql container on port 8080
+
 EXPOSE 3306
 
 **Build the Docker image for the Spring Boot application:**
@@ -96,17 +105,32 @@ docker run --name mysqldb --network myapp -e MYSQL_ROOT_PASSWORD=root -e  -p 330
 
 **7. Dockerize the Spring Boot Application**
 
-Create a Dockerfile for the Spring Boot application in the project root directory:
+Create a Dockerfile for the Spring Boot application in the project root directory:\
+
+run the command:  
+
+vi Dockerfile
+
+write the docker file as below:
 
 #Start with a base image containing Java runtime
+
 FROM openjdk:12
+
 #working directory
+
 WORKDIR /app
+
 #Add the application's jar to the container
+
 COPY target/SpringBootRegistrationLogin-1.0.jar .
+
 #Exposing container on port 8080
+
 EXPOSE 8080
+
 #Run the jar file
+
 ENTRYPOINT ["java","-jar","/app/SpringBootRegistrationLogin-1.0.jar"]
 
 
