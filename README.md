@@ -77,7 +77,9 @@ docker network create springboot-network
 **6. Creat a Dockerfile for Mysql container in the database sub directory**.
 
 #Start with a base image containing mysql
+
 FROM mysql:latest
+
 #Copy table.sql into the container for creating database
 COPY table.sql /docker-entrypoint-initdb.d/
 #Exposing  mysql container on port 8080
