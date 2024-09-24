@@ -138,6 +138,7 @@ ENTRYPOINT ["java","-jar","/app/SpringBootRegistrationLogin-1.0.jar"]
 
 Build the Docker image for the Spring Boot application:
 
+<img width="548" alt="image" src="https://github.com/user-attachments/assets/23e1ea86-1836-4cd6-a1e3-025e86dbcab7">
 docker build -t web .
 
 **9. Run the Spring Boot Application in a Docker Container**
@@ -145,6 +146,7 @@ docker build -t web .
 Now, run the Spring Boot application in a Docker container, attaching it to the custom Docker network:
 
 docker run --name webapp --network myapp -p 8080:8080 -d web
+<img width="770" alt="image" src="https://github.com/user-attachments/assets/c3d300bd-afec-4af2-8bf7-6776803fd8d5">
 
 This command will:
 
