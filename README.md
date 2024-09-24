@@ -1,16 +1,16 @@
 # SpringBootRegistrationLogin
-This project demonstrates a Spring Boot REST API application connected to a MySQL database, both running in Docker containers with a custom Docker network to enable container-to-container communication.
+This project demonstrates a Spring Boot application connected to a MySQL database, both running in Docker containers with a custom Docker network to enable container-to-container communication.
 
-Features
+**Features**
 
-Spring Boot application with RESTful APIs.
+Spring Boot application for registering users.
 
 MySQL database integration using Spring Data JPA.
 
 Custom Docker network for communication between Spring Boot and MySQL containers.
 
 
-Prerequisites
+**Prerequisites**
 
 Make sure you have the following installed:
 
@@ -21,12 +21,13 @@ Maven (for building the application)
 
 Getting Started
 
-1. Clone the Repository
+**1. Clone the Repository**
 
-git clone [https://github.com/your-username/springboot-mysql-docker-network.git](https://github.com/sureshc2024/SpringBootRegistrationLogin.git)
+git clone (https://github.com/sureshc2024/SpringBootRegistrationLogin.git)
+
 cd SpringBootRegistrationLogin
 
-2. Build the Spring Boot Application
+**2. Build the Spring Boot Application**
 
 First, package your Spring Boot application into a JAR file using Maven:
 
@@ -34,7 +35,7 @@ mvn install -DskipTests
 
 This will generate a springboot-mysql-0.0.1-SNAPSHOT.jar in the target/ directory.
 
-3. Create a Custom Docker Network
+**3. Create a Custom Docker Network**
 
 Create a custom Docker network for communication between the containers:
 
@@ -42,7 +43,7 @@ docker network create myapp
 
 This network will allow the MySQL and Spring Boot containers to communicate with each other.
 
-4. Run MySQL in a Docker Container
+**4. Run MySQL in a Docker Container**
 
 Run the MySQL container and attach it to the custom Docker network:
 
@@ -59,7 +60,7 @@ Expose MySQL on port 3306.
 Attach the container to the myapp network.
 
 
-5. Update Application Configuration
+**5. Update Application Configuration**
 
 Update the src/main/resources/application.properties file to point to the MySQL container in the custom Docker network:
 
