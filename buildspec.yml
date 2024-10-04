@@ -1,1 +1,24 @@
+version: 0.2
 
+phases:
+  install:
+    commands:
+      - echo "Entering the Install Phase"
+      - echo "installing maven Dependencies"
+      - mvn install -DskipTests
+  pre_build:
+    commands:
+      - echo "Entering the pre_build Phase"
+      - echo "verifying the maven installation"
+      - mvn --version
+  build:
+    commands:
+      - echo "entering the build stage"
+      - mvn package
+  post_build:
+    commands:
+      - echo "build phase completed successfully"
+      - aws s3 cp target/*.jar s3://myspringbootdevops/
+artifacts:
+  files:
+    - target/*.jar
