@@ -5,7 +5,6 @@ phases:
     commands:
       - echo "Entering the Install Phase"
       - echo "installing maven Dependencies"
-      - mvn install -DskipTests
   pre_build:
     commands:
       - echo "Entering the pre_build Phase"
