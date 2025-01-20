@@ -9,15 +9,19 @@ phases:
     commands:
       - echo "Entering the pre_build Phase"
       - echo "verifying the maven installation"
+      - docker login --username tech.devopsengineer@gmail.com --password Tszfonnt@27051993
       - mvn --version
   build:
     commands:
       - echo "entering the build stage"
       - mvn install -DskipTests
+      - docker build -t sureshc2024/springbootapp .
+      - docker tag sureshc2024/springbootapp:latest sureshc2024/springbootapp:v1
   post_build:
     commands:
       - echo "build phase completed successfully"
       - aws s3 cp target/*.jar s3://myspringbootdevops/
+      - docker push sureshc2024/springbootapp:v1
 artifacts:
   files:
     - target/*.jar
