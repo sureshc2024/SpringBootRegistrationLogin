@@ -16,7 +16,11 @@ on:
           - development
           - staging
           - production
-
+#permissions:
+  #contents: read # Default for pushes is write, so this explicitly lowers it
+  #pull-requests: write # Explicitly grant write access for PRs if needed
+  #issues: write # Allow workflow to create/update issues
+  #packages: write # Allow publishing packages
 env:
   DOCKER_USERNAME: sureshc2024
   DOCKER_REPO: springboot
@@ -29,6 +33,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        #with:
+          #repository: your-org/another-private-repo # The other repository
+          #token: ${{ secrets.MY_PAT }} # Use your PAT stored as a secret
+          #path: another-repo-directory # Where to clone it
 
       - name: Set up JDK ${{ matrix.java }}
         uses: actions/setup-java@v4
