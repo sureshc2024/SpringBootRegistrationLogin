@@ -1,21 +1,21 @@
 on:
-  #push:
-    #branches:
-      #- main 
-  #pull_request: 
-    #branches:
-      #- main
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Environment to deploy to'
-        required: true
-        default: 'development'
-        type: choice
-        options:
-          - development
-          - staging
-          - production
+  push:
+    branches:
+      - main 
+  pull_request: 
+    branches:
+      - main
+  #workflow_dispatch:
+    #inputs:
+      #environment:
+        #description: 'Environment to deploy to'
+        #required: true
+        #default: 'development'
+        #type: choice
+        #options:
+          #- development
+          #- staging
+          #- production
 #permissions:
   #contents: read # Default for pushes is write, so this explicitly lowers it
   #pull-requests: write # Explicitly grant write access for PRs if needed
