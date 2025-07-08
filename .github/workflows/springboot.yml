@@ -5,6 +5,17 @@ on:
   pull_request: 
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: 'Environment to deploy to'
+        required: true
+        default: 'development'
+        type: choice
+        options:
+          - development
+          - staging
+          - production
 
 env:
   DOCKER_USERNAME: sureshc2024
