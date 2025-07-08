@@ -1,8 +1,8 @@
 on:
   push:
     branches:
-      - main # Trigger on push to the main branch
-  pull_request: # Also trigger on pull requests
+      - main 
+  pull_request: 
     branches:
       - main
 
@@ -42,7 +42,3 @@ jobs:
           context: .
           push: true
           tags: ${{ env.DOCKER_IMAGE_BASE }}:${{ github.sha }}-${{ matrix.os }}-${{ matrix.java }}
-          # Example of an additional 'latest' tag for a specific canonical build if needed
-          # tags: |
-          #   ${{ env.DOCKER_IMAGE_BASE }}:${{ github.sha }}-${{ matrix.os }}-${{ matrix.java }}
-          #   ${{ env.DOCKER_IMAGE_BASE }}:latest-ubuntu-17 # If this specific job is the ubuntu-17 build
