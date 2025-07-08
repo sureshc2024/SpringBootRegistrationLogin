@@ -1,1 +1,48 @@
+on:
+  push:
+    branches:
+      - main # Trigger on push to the main branch
+  pull_request: # Also trigger on pull requests
+    branches:
+      - main
 
+env:
+  DOCKER_IMAGE_BASE: ${{ secrets.DOCKER_USERNAME }}/java-microservice 
+jobs:
+  build-and-push:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        java: [ '17', '21' ] 
+        os: [ ubuntu-latest, windows-latest ] 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ matrix.java }} on ${{ matrix.os }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Build with Maven and Run Tests
+        run: mvn -B clean package --file pom.xml
+
+      - name: Log in to Docker Registry
+        uses: docker/login-action@v3
+        with:
+          registry: docker.io 
+          username: ${{ env.DOCKER_USERNAME }} # Use env var now
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
+      - name: Build and Push Docker image (Unique Tag per Matrix Variant)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ${{ env.DOCKER_IMAGE_BASE }}:${{ github.sha }}-${{ matrix.os }}-${{ matrix.java }}
+          # Example of an additional 'latest' tag for a specific canonical build if needed
+          # tags: |
+          #   ${{ env.DOCKER_IMAGE_BASE }}:${{ github.sha }}-${{ matrix.os }}-${{ matrix.java }}
+          #   ${{ env.DOCKER_IMAGE_BASE }}:latest-ubuntu-17 # If this specific job is the ubuntu-17 build
