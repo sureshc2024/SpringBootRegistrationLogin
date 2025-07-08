@@ -40,4 +40,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_Repo}}:${{ matrix.java }}
+          tags: ${{ env.DOCKER_USERNAME }}:${{ env.DOCKER_Repo}}:${{ matrix.java }}
