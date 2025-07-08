@@ -21,9 +21,7 @@ on:
   #pull-requests: write # Explicitly grant write access for PRs if needed
   #issues: write # Allow workflow to create/update issues
   #packages: write # Allow publishing packages
-env:
-  DOCKER_USERNAME: sureshc2024
-  DOCKER_REPO: springboot
+
 jobs:
   build-and-push:
     runs-on: ubuntu
