@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu
     strategy:
       matrix:
-        java: [ '17' ] 
+        java: [ '12' '17' ] 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -40,4 +40,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: sureshc2024/springboot:12
+          tags: sureshc2024/springboot:${{ matrix.java }}
