@@ -1,4 +1,4 @@
-FROM mysql:latest
+FROM mysql:9.6.0-oraclelinux9
 
 RUN apt-get update && \
     apt-get install -y --only-upgrade openssl && \
